@@ -92,16 +92,5 @@ pipeline {
         }
     }
 }
-
-    stage('Cleanup Docker Containers') {
-      steps {
-        sh '''
-          echo "Stopping and removing unused Docker containers..."
-          docker ps -q | xargs -r docker stop
-          docker ps -aq | xargs -r docker rm -f
-          docker image prune -f
-        '''
-      }
-    }
-  }
+}
 }
